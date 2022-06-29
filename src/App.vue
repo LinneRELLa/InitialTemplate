@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
+    <div id="nav">
+      <router-link to="/">Home</router-link> <br>
       <router-link to="/about">About</router-link>
-    </nav>
+    </div>
     <router-view/>
   </div>
 </template>
+<script>
+  
+import {normal} from './http'
+
+  export default{
+created(){
+           normal().then((res)=>{console.log(res)})
+}
+
+  }
+
+
+
+
+
+</script>
 
 <style lang="less">
 #app {
@@ -15,18 +31,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
 }
 
-nav {
-  padding: 30px;
+#nav {
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+background: rgba(244,245,247);
 }
 </style>
