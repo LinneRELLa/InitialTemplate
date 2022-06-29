@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> <br>
-      <router-link to="/about">About</router-link>
+    
+
+<router-link v-for="route in routes" :key="route.path" :to="route.path">
+        <div >{{route.name}}</div>
+      </router-link>
     </div>
     <router-view/>
   </div>
@@ -13,8 +16,19 @@ import {normal} from './http'
 
   export default{
 created(){
+
            normal().then((res)=>{console.log(res)})
+},
+mounted(){
+
+  console.log(this.$store.state.permission)
+},
+computed:{
+routes() {
+  
+  return this.$router.options.routes
 }
+},
 
   }
 
